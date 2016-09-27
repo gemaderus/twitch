@@ -1,0 +1,13 @@
+.Footer {
+  font-size: 16px;
+  padding: 20px;
+  text-align: center;
+
+  a {
+    color: #FF5FAB;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

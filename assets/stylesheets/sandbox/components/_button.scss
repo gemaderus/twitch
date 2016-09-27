@@ -1,0 +1,36 @@
+.Btn {
+  -webkit-appearance: none;
+  -moz-appearance:    none;
+  appearance:         none;
+  background-color: transparent;
+  border-radius: 6px;
+  border: 0;
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 2rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.25s;
+}
+
+.Btn-action {
+  background-color: #FF5959;
+  color: white;
+
+    &:hover {
+    background-color: darken(#FF5959, 10);
+  }
+}
+
+.Button-items {
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+

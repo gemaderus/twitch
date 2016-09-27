@@ -13,14 +13,14 @@
 
   </head>
   <body>
-
-    {% include "partials/header.html" %}
-
+  <div class="Wrapper-flex">
     <section class="Content">
       {% block maincontent %}
       {% endblock %}
     </section>
-    </div>
+
+    {% include "partials/footer.html" %}
+  </div>
 
     <script src="/javascripts/application.js"></script>
   </body>

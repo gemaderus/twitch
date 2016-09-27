@@ -13,29 +13,51 @@
 
   </head>
   <body>
-
-    <header>
-  <h1>Hola!</h1>
-</header>
-
-
+  <div class="Wrapper-flex">
     <section class="Content">
       
-<h1>About this</h1>
+<h1 class="Title align-center">Twitch Streammers TV</h1>
+<form action="" class="Form">
+  <ul class="Button-items is-flex">
+    <li class="Button-item">
+      <button class="Btn Btn-action">All</button>
+    </li>
+    <li class="Button-item">
+      <button class="Btn Btn-action">Online</button>
+    </li>
+    <li class="Button-item">
+      <button class="Btn Btn-action">Offline</button>
+    </li>
+  </ul>
+  <div>
+    <input type="search" class="Input-search" placeholder="Search in your channel">
+  </div>
+</form>
 
-<p>It becomes increasingly important to maintain a consistent style and visual language across all areas of a web application. To do this, I have built the following tool to prototype components for faster product development.</p>
-
-<p>It uses:</p>
-<ul>
-  <li>Gulp</li>
-  <li>Sass</li>
-  <li>Partials</li>
-  <li>Webpack</li>
-  <li>Browsersync</li>
+<ul class="User-items">
+  <li class="User-item">
+    <div class="is-flex flex-center-item">
+      <div class="Avatar">
+        <img src="http://lorempixel.com/50/50/" alt="">
+      </div>
+      <div class="User-info">
+        <p><a href="#" class="User-info">User</a><span class="Status"> - Online</span></p>
+        <span class="Closed-advice">Has closed their account</span>
+        <p class="Canal">Game</p>
+      </div>
+    </div>
+  </li>
 </ul>
 
     </section>
-    </div>
+
+    <footer class="Footer">
+  <p class="mb0">Coded and design by <a target="_blank" href="http://gemaderus.com/">Gema de Rus</a></p>
+  <span>Photo by </span><a target="_blank" href="http://www.freepik.com">Designed by balasoiu / Freepik</a>
+</footer>
+
+
+  </div>
 
     <script src="/javascripts/application.js"></script>
   </body>
