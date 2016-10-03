@@ -31,6 +31,17 @@
 .Button-items {
   justify-content: space-between;
   margin-bottom: 3rem;
+
+  @media screen and (min-width: 600px) {
+
+  }
+}
+
+.Button-item {
+
+  @media screen and (min-width: 600px) {
+    margin-right: 3rem;
+  }
 }
 
 

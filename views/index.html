@@ -5,32 +5,31 @@
 <form action="" class="Form">
   <ul class="Button-items is-flex">
     <li class="Button-item">
-      <button class="Btn Btn-action">All</button>
+      <button class="Btn Btn-action" id="button-all">All</button>
     </li>
     <li class="Button-item">
-      <button class="Btn Btn-action">Online</button>
+      <button class="Btn Btn-action" id="button-online">Online</button>
     </li>
     <li class="Button-item">
-      <button class="Btn Btn-action">Offline</button>
+      <button class="Btn Btn-action" id="button-offline">Offline</button>
     </li>
   </ul>
-  <div>
+  <div class="Input-holder">
     <input type="search" class="Input-search" placeholder="Search in your channel">
   </div>
 </form>
 
-<ul class="User-items">
-  <li class="User-item">
+<ul class="User-items" id="user-items">
+  <!-- <li class="User-item">
     <div class="is-flex flex-center-item">
       <div class="Avatar">
-        <img src="http://lorempixel.com/50/50/" alt="">
+        <img src="images/logo.svg" alt="">
       </div>
       <div class="User-info">
-        <p><a href="#" class="User-info">User</a><span class="Status"> - Online</span></p>
-        <span class="Closed-advice">Has closed their account</span>
-        <p class="Canal">Game</p>
+        <p><a href="#" class="User-name" id="username"></a><span class="Status" id="status"></span></p>
+        <p class="Game" id="game"></p>
       </div>
     </div>
-  </li>
+  </li> -->
 </ul>
 {% endblock %}

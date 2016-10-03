@@ -385,15 +385,27 @@ p {
   padding: 4rem 0;
   -webkit-box-flex: 1;
       -ms-flex: 1;
-          flex: 1; }
+          flex: 1;
+  width: 100%; }
+  @media screen and (min-width: 600px) {
+    .Content {
+      max-width: 1000px; } }
 
 .Avatar {
   margin-right: 2rem; }
   .Avatar img {
+    width: 40px;
+    height: 40px;
     border-radius: 50%; }
 
 input[type="search"] {
   box-sizing: border-box; }
+
+@media screen and (min-width: 600px) {
+  .Input-holder {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1; } }
 
 .Input-search {
   border-radius: 6px;
@@ -479,6 +491,10 @@ form, h2 {
           justify-content: space-between;
   margin-bottom: 3rem; }
 
+@media screen and (min-width: 600px) {
+  .Button-item {
+    margin-right: 3rem; } }
+
 .Icon {
   display: inline-block; }
 
@@ -539,15 +555,18 @@ form, h2 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 100%; }
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
 
 .Form {
   padding: 0 2rem; }
   @media screen and (min-width: 600px) {
     .Form {
-      max-width: 50%;
-      margin-left: auto;
-      margin-right: auto; } }
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; } }
 
 .User-items {
   padding: 0 2rem; }
@@ -560,11 +579,12 @@ form, h2 {
 .User-info {
   font-size: 2rem; }
 
+.Closed-advice {
+  display: none; }
+
 .Footer {
   font-size: 16px;
   padding: 20px;
   text-align: center; }
-  .Footer a {
-    color: #FF5FAB; }
-    .Footer a:hover {
-      text-decoration: underline; }
+  .Footer a:hover {
+    text-decoration: underline; }
