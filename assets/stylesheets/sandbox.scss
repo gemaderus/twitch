@@ -14,10 +14,12 @@
 
 @import "sandbox/helpers/align-text";
 @import "sandbox/helpers/whitespaces";
+@import "sandbox/helpers/display";
 
 /* 4. Component */
 
 @import "sandbox/components/content";
+@import "sandbox/components/error-api";
 @import "sandbox/components/avatar";
 @import "sandbox/components/input";
 @import "sandbox/components/search";
@@ -28,7 +30,9 @@
 @import "sandbox/components/is-clicked";
 @import "sandbox/components/is-flex";
 @import "sandbox/components/title";
-@import "sandbox/components/wrapper-flex";
+@import "sandbox/components/stycky_footer";
 @import "sandbox/components/form";
 @import "sandbox/components/user-items";
+@import "sandbox/components/media";
+@import "sandbox/components/error-search";
 @import "sandbox/components/footer";

@@ -8,11 +8,11 @@ Links styles.
 */
 
 a {
-  color: #FF5959;
+  color: white;
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: underline;
 
   &:hover {
-    text-decoration: underline;
+    text-decoration: none;
   }
 }

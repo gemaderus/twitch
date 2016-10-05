@@ -1,18 +1,44 @@
 .User-items {
-  padding: 0 2rem;
+  padding: 0 1rem;
+  display: flex;
+  flex-wrap: wrap;
+}
 
+.User-item-padded {
+  padding: 1rem;
+  flex-basis: 100%;
+
+  @media screen and (min-width: 600px) {
+    flex-basis: 50%;
+  }
+
+  @media screen and (min-width: 1200px) {
+    flex-basis: 33.3333%;
+  }
 }
 
 .User-item {
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 6px;
-  background-color: white;
+  height: 200px;
+  position: relative;
 }
 
 .User-info {
   font-size: 2rem;
+  color: white;
+  position: absolute;
+  bottom: 10px;
 }
 
 .Closed-advice {
   display: none;
+}
+
+.Background-gradient {
+  background: #505f69; /* Old browsers */
+  background: -moz-linear-gradient(left, #505f69 0%, #dddddd 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #505f69 0%,#dddddd 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #505f69 0%,#dddddd 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#505f69', endColorstr='#dddddd',GradientType=1 ); /* IE6-9 */
 }

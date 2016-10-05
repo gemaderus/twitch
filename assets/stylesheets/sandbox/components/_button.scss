@@ -23,21 +23,21 @@
   background-color: #FF5959;
   color: white;
 
-    &:hover {
+  &:hover {
     background-color: darken(#FF5959, 10);
   }
 }
 
 .Button-items {
-  justify-content: space-between;
   margin-bottom: 3rem;
 
   @media screen and (min-width: 600px) {
-
+    justify-content: space-between;
   }
 }
 
 .Button-item {
+  margin-right: 2rem;
 
   @media screen and (min-width: 600px) {
     margin-right: 3rem;
