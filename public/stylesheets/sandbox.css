@@ -5,6 +5,7 @@
 * 2. Prevent iOS text size adjust after orientation change, without disabling
 *    user zoom.
 */
+@import url("https://fonts.googleapis.com/css?family=Comfortaa");
 html {
   font-family: sans-serif;
   /* 1 */
@@ -275,7 +276,8 @@ td,
 th {
   padding: 0; }
 
-/* 2. Base */
+/* 2. Settings */
+/* 3. Base */
 /*
 
 Global
@@ -291,7 +293,7 @@ General fonts and other global styles of the page.
 
 html {
   box-sizing: border-box;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'Comfortaa', cursive;
   font-size: 62.5%;
   line-height: 1.5;
   position: relative; }
@@ -355,7 +357,7 @@ Reset default styles on paragraphs.
 p {
   margin: 0; }
 
-/* 3. Helpers */
+/* 4. Helpers */
 .align-center {
   text-align: center; }
 
@@ -365,35 +367,20 @@ p {
 .align-right {
   text-align: left; }
 
-.mb0 {
-  margin-bottom: 5px; }
-
-.mb1 {
-  margin-bottom: 1rem; }
-
-.mb2 {
-  margin-bottom: 2rem; }
-
-.mb3 {
-  margin-bottom: 3rem; }
-
-.mb6 {
-  margin-bottom: 6rem; }
-
 .is-visible {
   display: block; }
 
 .is-hidden {
   display: none; }
 
-/* 4. Component */
+/* 5. Component */
 .Content {
-  padding: 4rem 0;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  width: 100%;
-  position: relative; }
+  padding: 4rem 0;
+  position: relative;
+  width: 100%; }
   @media screen and (min-width: 600px) {
     .Content {
       max-width: 1200px; } }
@@ -417,13 +404,10 @@ p {
 .Avatar {
   margin-right: 2rem; }
   .Avatar img {
+    border-radius: 50%;
     border: 5px solid white;
-    width: 50px;
     height: 50px;
-    border-radius: 50%; }
-
-.Avatar-default img {
-  background-image: url("../images/logo.svg"); }
+    width: 50px; }
 
 input[type="search"] {
   box-sizing: border-box; }
@@ -437,53 +421,14 @@ input[type="search"] {
 .Input-search {
   border-radius: 6px;
   border: 0;
-  color: #929487;
+  color: #505F69;
   font-size: 1.6rem;
   line-height: 1;
   outline: none;
   padding: 1.8rem;
   width: 100%; }
-
-.Search {
-  max-width: 100%;
-  padding: 5rem 0px; }
-  .Search h1 {
-    font-size: 30px; }
-  .Search h2 {
-    font-size: 20px; }
-  @media screen and (min-width: 600px) {
-    .Search h1 {
-      font-size: 40px; }
-    .Search h2 {
-      font-size: 30px; } }
-  @media screen and (min-width: 810px) {
-    .Search {
-      width: 800px; } }
-
-form, h2 {
-  margin-bottom: 5rem; }
-
-.Topic-items {
-  color: #929487;
-  max-width: 100%; }
-  @media screen and (min-width: 810px) {
-    .Topic-items {
-      width: 800px; } }
-
-.Topic-item {
-  background-color: white;
-  border-radius: 10px;
-  margin-bottom: 5rem;
-  max-width: 100%;
-  padding: 30px; }
-  .Topic-item h3 {
-    border-bottom: 1px solid #ddd;
-    font-size: 20px;
-    margin-bottom: 30px;
-    padding-bottom: 30px; }
-  .Topic-item p {
-    font-size: 16px;
-    margin-bottom: 30px; }
+  .Input-search:focus {
+    box-shadow: inset 0 0 0 1px #505F69; }
 
 .Btn {
   -webkit-appearance: none;
@@ -513,72 +458,40 @@ form, h2 {
     background-color: #ff2626; }
 
 .Button-items {
-  margin-bottom: 3rem; }
+  margin-bottom: 3rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
   @media screen and (min-width: 600px) {
     .Button-items {
       -webkit-box-pack: justify;
           -ms-flex-pack: justify;
-              justify-content: space-between; } }
+              justify-content: space-between;
+      margin-bottom: 0; } }
 
 .Button-item {
   margin-right: 2rem; }
+  .Button-item:last-child {
+    margin-right: 0; }
   @media screen and (min-width: 600px) {
     .Button-item {
-      margin-right: 3rem; } }
-
-.Icon {
-  display: inline-block; }
-
-.Icon-lens {
-  fill: #929487;
-  left: 20px;
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%); }
-
-.Body {
-  background-image: url(../../images/powerfull.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: #78bcce;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column; }
-
-.is-clicked.Body {
-  background-image: none;
-  background-color: #78bcce;
-  color: white;
-  -webkit-transition: background-color 0.3s;
-  transition: background-color 0.3s; }
+      margin-right: 3rem; }
+      .Button-item:last-child {
+        margin-right: 3rem; } }
 
 .is-flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex; }
 
-.flex-column {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column; }
-
-.flex-center-item {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; }
-
 .Title {
   font-size: 3rem;
-  margin-bottom: 5rem; }
+  margin-bottom: 4rem; }
 
 .Wrapper-flex {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -586,13 +499,11 @@ form, h2 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 100%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; }
+  height: 100%; }
 
 .Form {
-  padding: 0 2rem; }
+  padding: 0 2rem;
+  margin-bottom: 4rem; }
   @media screen and (min-width: 600px) {
     .Form {
       display: -webkit-box;
@@ -600,17 +511,17 @@ form, h2 {
       display: flex; } }
 
 .User-items {
-  padding: 0 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap; }
+      flex-wrap: wrap;
+  padding: 0 1rem; }
 
 .User-item-padded {
-  padding: 1rem;
   -ms-flex-preferred-size: 100%;
-      flex-basis: 100%; }
+      flex-basis: 100%;
+  padding: 1rem; }
   @media screen and (min-width: 600px) {
     .User-item-padded {
       -ms-flex-preferred-size: 50%;
@@ -621,47 +532,36 @@ form, h2 {
           flex-basis: 33.3333%; } }
 
 .User-item {
-  padding: 1.5rem;
   border-radius: 6px;
   height: 200px;
+  padding: 1.5rem;
   position: relative; }
 
 .User-info {
-  font-size: 2rem;
+  bottom: 10px;
   color: white;
-  position: absolute;
-  bottom: 10px; }
+  font-size: 1.6rem;
+  position: absolute; }
 
 .Closed-advice {
   display: none; }
 
 .Background-gradient {
-  background: #505f69;
+  background: #505F69;
   /* Old browsers */
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, #505f69 0%, #dddddd 100%);
+  background: -webkit-linear-gradient(left, #505F69 0%, #dddddd 100%);
   /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right, #505f69 0%, #dddddd 100%);
+  background: linear-gradient(to right, #505F69 0%, #dddddd 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#505f69', endColorstr='#dddddd',GradientType=1 );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$font-color', endColorstr='#dddddd',GradientType=1 );
   /* IE6-9 */ }
 
-.Media {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 100%; }
-
 .Error-search {
-  font-size: 20px;
-  color: white; }
+  color: white;
+  font-size: 20px; }
 
 .Footer {
   font-size: 16px;
   padding: 20px;
   text-align: center; }
-  .Footer a:hover {
-    text-decoration: underline; }

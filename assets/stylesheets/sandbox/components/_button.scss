@@ -20,27 +20,37 @@
 }
 
 .Btn-action {
-  background-color: #FF5959;
+  background-color: $secondary-color;
   color: white;
 
   &:hover {
-    background-color: darken(#FF5959, 10);
+    background-color: darken($secondary-color, 10);
   }
 }
 
 .Button-items {
   margin-bottom: 3rem;
+  justify-content: center;
 
   @media screen and (min-width: 600px) {
     justify-content: space-between;
+    margin-bottom: 0;
   }
 }
 
 .Button-item {
   margin-right: 2rem;
 
+  &:last-child {
+    margin-right: 0;
+  }
+
   @media screen and (min-width: 600px) {
     margin-right: 3rem;
+
+    &:last-child {
+      margin-right: 3rem;
+    }
   }
 }
 

@@ -1,8 +1,6 @@
 var $ = require('jquery');
 
-var channels = [{id: 1, channel: "ESL_SC2"}, {id: 2, channel: "OgamingSC2"}, {id: 3, channel: "cretetion"}, {id: 4, channel: "freecodecamp"}, {id: 5, channel: "storbeck"}, {id: 6, channel: "habathcx"}, {id: 7, channel: "RobotCaleb"}, {id: 8, channel: "noobs2ninjas"}, {id: 9, channel: "monstercat"}, {id: 10, channel: "medrybw"}, {id: 11, channel: "brunofin"}, {id: 12, channel: "comster404"}];
-
-// {id: 11, channel: "brunofin"}
+var channels = [{id: 1, channel: "ESL_SC2"}, {id: 2, channel: "OgamingSC2"}, {id: 3, channel: "cretetion"}, {id: 4, channel: "freecodecamp"}, {id: 5, channel: "storbeck"}, {id: 6, channel: "habathcx"}, {id: 7, channel: "brunofin"}, {id: 8, channel: "noobs2ninjas"}, {id: 9, channel: "medrybw"}, {id: 10, channel: "monstercat"}, {id: 11, channel: "RobotCaleb"}, {id: 12, channel: "comster404"}];
 
 var template = '<li class="User-item-padded"><div class="User-item"><div class="Avatar"></div><div class="User-info"><p><a href="#" class="User-name"></a><span class="Status"></span></p><p class="Game"></p><p id="error"></p></div></div></div></li>';
 

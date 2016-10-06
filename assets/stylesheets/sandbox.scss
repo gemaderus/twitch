@@ -2,7 +2,11 @@
 
 @import "sandbox/base/normalize";
 
-/* 2. Base */
+/* 2. Settings */
+
+@import "sandbox/settings/variables";
+
+/* 3. Base */
 
 @import "sandbox/base/global";
 @import "sandbox/base/lists";
@@ -10,29 +14,23 @@
 @import "sandbox/base/links";
 @import "sandbox/base/paragraphs";
 
-/* 3. Helpers */
+
+/* 4. Helpers */
 
 @import "sandbox/helpers/align-text";
-@import "sandbox/helpers/whitespaces";
 @import "sandbox/helpers/display";
 
-/* 4. Component */
+/* 5. Component */
 
 @import "sandbox/components/content";
 @import "sandbox/components/error-api";
 @import "sandbox/components/avatar";
 @import "sandbox/components/input";
-@import "sandbox/components/search";
-@import "sandbox/components/topic";
 @import "sandbox/components/button";
-@import "sandbox/components/icon";
-@import "sandbox/components/body";
-@import "sandbox/components/is-clicked";
 @import "sandbox/components/is-flex";
 @import "sandbox/components/title";
 @import "sandbox/components/stycky_footer";
 @import "sandbox/components/form";
 @import "sandbox/components/user-items";
-@import "sandbox/components/media";
 @import "sandbox/components/error-search";
 @import "sandbox/components/footer";
