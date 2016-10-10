@@ -385,22 +385,6 @@ p {
     .Content {
       max-width: 1200px; } }
 
-.Error-api {
-  background-color: #FF5959;
-  border-radius: 20px;
-  color: white;
-  display: none;
-  font-size: 30px;
-  left: 50%;
-  margin: auto;
-  padding: 44px;
-  position: absolute;
-  text-align: center;
-  top: 40%;
-  -webkit-transform: translate(-50%, -40%);
-          transform: translate(-50%, -40%);
-  width: 40%; }
-
 .Avatar {
   margin-right: 2rem; }
   .Avatar img {
@@ -453,15 +437,16 @@ input[type="search"] {
 
 .Btn-action {
   background-color: #FF5959;
-  color: white; }
+  color: white;
+  width: 100%;
+  height: 100%; }
   .Btn-action:hover {
     background-color: #ff2626; }
 
 .Button-items {
   margin-bottom: 3rem;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center; }
+  -ms-flex-pack: distribute;
+      justify-content: space-around; }
   @media screen and (min-width: 600px) {
     .Button-items {
       -webkit-box-pack: justify;
@@ -469,20 +454,20 @@ input[type="search"] {
               justify-content: space-between;
       margin-bottom: 0; } }
 
-.Button-item {
-  margin-right: 2rem; }
-  .Button-item:last-child {
-    margin-right: 0; }
-  @media screen and (min-width: 600px) {
-    .Button-item {
-      margin-right: 3rem; }
-      .Button-item:last-child {
-        margin-right: 3rem; } }
+@media screen and (min-width: 600px) {
+  .Button-item {
+    margin-right: 3rem; }
+    .Button-item:last-child {
+      margin-right: 3rem; } }
 
 .is-flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex; }
+
+.flex-wrap {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
 
 .Title {
   font-size: 3rem;
@@ -504,11 +489,21 @@ input[type="search"] {
 .Form {
   padding: 0 2rem;
   margin-bottom: 4rem; }
+
+.Form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
   @media screen and (min-width: 600px) {
-    .Form {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex; } }
+    .Form-group {
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: row;
+              flex-direction: row; } }
 
 .User-items {
   display: -webkit-box;
@@ -535,7 +530,8 @@ input[type="search"] {
   border-radius: 6px;
   height: 200px;
   padding: 1.5rem;
-  position: relative; }
+  position: relative;
+  background-position: 0%; }
 
 .User-info {
   bottom: 10px;

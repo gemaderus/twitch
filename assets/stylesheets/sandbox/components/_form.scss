@@ -1,8 +1,13 @@
 .Form {
   padding: 0 2rem;
   margin-bottom: 4rem;
+}
+
+.Form-group {
+  display: flex;
+  flex-direction: column;
 
   @media screen and (min-width: 600px) {
-    display: flex;
+    flex-direction: row;
   }
 }

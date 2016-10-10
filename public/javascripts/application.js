@@ -109,9 +109,9 @@
 	    if ($.trim(search) !== '') {
 	      $('.User-item-padded').each(function () {
 	        var nodo = $(this);
-	        var algo = nodo.find('.User-name').text();
+	        var text = nodo.find('.User-name').text();
 
-	        if (algo.indexOf(search) !== -1) {
+	        if (text.indexOf(search) !== -1) {
 	          nodo.show();
 
 	        } else {
