@@ -48,79 +48,98 @@
 
 	var channels = [{id: 1, channel: "ESL_SC2"}, {id: 2, channel: "OgamingSC2"}, {id: 3, channel: "cretetion"}, {id: 4, channel: "freecodecamp"}, {id: 5, channel: "storbeck"}, {id: 6, channel: "habathcx"}, {id: 7, channel: "brunofin"}, {id: 8, channel: "noobs2ninjas"}, {id: 9, channel: "medrybw"}, {id: 10, channel: "monstercat"}, {id: 11, channel: "RobotCaleb"}, {id: 12, channel: "comster404"}];
 
-	var template = '<li class="User-item-padded"><div class="User-item"><div class="Avatar"></div><div class="User-info"><p><a href="#" class="User-name"></a><span class="Status"></span></p><p class="Game"></p><p id="error"></p></div></div></div></li>';
+	var template = '<div class="User-item"><div class="Avatar"></div><div class="User-info"><p><a href="#" class="User-name"></a><span class="Status"></span></p><p class="Game"></p><p id="error"></p></div></div></div>';
 
-	var users = $("#user-items");
+	var users = document.getElementById("user-items");
 
 	function makeURL(type, name) {
 	  return 'https://api.twitch.tv/kraken/' + type + '/' + name + '?client_id=c09cvez4remudiu2rau8edykwhpp3t0';
 	}
 
+	function ajaxCall(url, callback) {
+	  var xhr = new XMLHttpRequest();
+	  var data;
+	  xhr.onreadystatechange = function() {
+	    if(xhr.readyState === 4) {
+	      if(xhr.status === 200) {
+	        data = JSON.parse(xhr.responseText);
+	        callback(data);
+	      } else {
+	        updateError();
+	      }
+	    }
+	  }
+
+	  xhr.open("GET", url, true);
+	  xhr.send();
+	}
+
 	function urlStream(type, item, nodo) {
-	  $.getJSON(makeURL(type, item), function(response) {
+	  ajaxCall(makeURL(type, item), function(response) {
 	    updateData(nodo, response);
 	  });
 	};
 
 	function urlChannels(type, item, nodo) {
-	  $.getJSON(makeURL(type, item), function(response) {
+	  ajaxCall(makeURL(type, item), function(response) {
 	    infoUserName(nodo, response);
 	    infoLogo(nodo, response);
 	    bannerImage(nodo, response);
-	  }).fail(function(error) {
-	    updateError(nodo, error);
 	  });
 	};
 
 	function updateError(nodo, data) {
 	  var channelError = JSON.parse(data.responseText);
-	  nodo.find('.Avatar').append('<img src="images/logo.svg" alt="logo" class="logo-default">');
-	  nodo.find("#error").html(channelError.message);
-	  nodo.find(".User-item").toggleClass("Background-gradient");
-
-	}
-
-	$(function() {
-	  channels.forEach(function(channel) {
-	    var nodo = createNodo(channel);
-	    urlStream("streams", channel.channel, nodo);
-	    urlChannels("channels", channel.channel, nodo);
+	  nodo.querySelectorAll(".Avatar").forEach(function(item, index, array) {
+	    item.innerHTML = '<img src="images/logo.svg" alt="logo" class="logo-default">';
 	  });
 
-	  onlineGamers();
-	  offlineGamers();
-	  allGamers();
-	  filterInput();
-	});
+	  nodo.querySelector("#error").innerHTML = channelError.message;
+
+	  nodo.querySelectorAll(".User-item").forEach(function(item, index, array) {
+	    item.classList.toggle("Background-gradient");
+	  });
+	}
+
+	// function updateError(nodo, data) {
+	//   var channelError = JSON.parse(data.responseText);
+	//   nodo.find('.Avatar').append('<img src="https://www.dropbox.com/s/gtx0nldzgy38sxu/logo.svg?raw=1" alt="logo" class="logo-default">');
+	//   nodo.find("#error").html(channelError.message);
+	//   nodo.find(".User-item").toggleClass("Background-gradient");
+
+	// }
 
 	function createNodo(channel) {
-	  var nodo = $(template);
-	  nodo.attr('id', 'channel' + channel.id);
-	  users.append(nodo);
+	  var nodo = document.createElement("li");
+	  nodo.className = "User-item-padded";
+	  nodo.innerHTML = template;
+	  nodo.setAttribute('id', 'channel' + channel.id);
+
+	  users.appendChild(nodo);
+
 	  return nodo;
 	}
 
 	function filterInput(str) {
-	  //var nodo = $(".Error-search");
+	  var inputSearch = document.getElementById("input-search");
 
-	  $("#input-search").on("keyup", function(e) {
-	    var search = $("#input-search").val();
+	  inputSearch.addEventListener("keyup", function(e) {
+	    var search = inputSearch.value;
 
-	    if ($.trim(search) !== '') {
-	      $('.User-item-padded').each(function () {
-	        var nodo = $(this);
-	        var text = nodo.find('.User-name').text();
+	    if (search.trim !== '') {
+	      var container = document.getElementsByClassName('User-item-padded').forEach(function (nodo) {
+	        var text = nodo.querySelectorAll('.User-name').textContent;
 
 	        if (text.indexOf(search) !== -1) {
-	          nodo.show();
+	          nodo.style.display = ''; //nodo.show();
 
 	        } else {
-	          nodo.hide();
-	          $(".Error-search").removeClass("is-hidden");
+	          nodo.style.display ="none"; //nodo.hide();
+	          document.getElementbyClassName("Error-search").classList.remove("is-hidden");
 	        }
 	      });
 	    } else {
-	       $('.User-item-padded').show();
+	       document.getElementsByClassName('User-item-padded').style.display = '';
 	    }
 	  });
 	}
@@ -140,8 +159,9 @@
 	    jsClass = 'js-online';
 	  };
 
-	  nodo.find(".Status").html(status);
-	  nodo.addClass(jsClass);
+	  nodo.querySelector(".Status").innerHTML = status;
+
+	  nodo.classList.add(jsClass);
 	  onlineData(nodo, data);
 	}
 
@@ -151,62 +171,104 @@
 	  }
 
 	  var game = item.stream.game;
-	  nodo.find(".Game").html(game);
+	  nodo.querySelector(".Game").innerHTML= game;
 	}
 
 	function infoLogo(nodo, user) {
 	  var userLogo = user.logo;
-	  var avatar = nodo.find('.Avatar');
+	  var avatar = nodo.querySelectorAll('.Avatar');
 
-	  if(userLogo === null) {
-	    avatar.append('<img src="images/logo.svg" alt="logo" class="logo-default">');
-	  } else {
-	    avatar.append('<img src="' + userLogo +'" alt="logo">');
-	  }
+	  avatar.forEach(function(item, index, array) {
+	    var image = document.createElement('img');
+
+	    if(userLogo === null) {
+	      image.src = "images/logo.svg";
+	      image.classList.add("logo-default");
+	    } else {
+	      image.src = userLogo;
+	    }
+
+	    item.appendChild(image);
+	  });
 	}
 
 	function infoUserName(nodo, user) {
 	  var userName = user.name;
 	  var urlChannel = user.url;
-	  nodo.find(".User-name").html(userName).attr("href", urlChannel);
+	  nodo.querySelector(".User-name").href = urlChannel;
+	  nodo.querySelector(".User-name").innerHTML = userName;
 	}
+
 
 	function bannerImage(nodo, image) {
 	  var banner = image.profile_banner;
 	  if( banner !== null) {
-	    nodo.find(".User-item").css({'background-image': 'url('+ banner + ')',
-	                                 'background-size': 'cover'});
+	    nodo.querySelectorAll(".User-item").forEach(function(item, index, array) {
+	      item.style.backgroundImage = 'url('+ banner + ')';
+	      item.style.backgroundSize = 'cover';
+	    });
+
 	  } else {
-	    nodo.find(".User-item").toggleClass("Background-gradient");
+	    nodo.querySelectorAll(".User-item").forEach(function(item, index, array) {
+	      item.classList.toggle("Background-gradient");
+	    });
 	  }
 	}
 
 	function onlineGamers() {
-	  $("#button-online").on("click", function(e) {
+
+	  buttonOnline = document.getElementById("button-online");
+	  buttonOnline.addEventListener("click", function(e) {
+
 	    e.preventDefault();
 
-	    $('.User-item-padded').hide();
-	    $('.User-item-padded.js-online').show();
+	    var li = document.getElementsByClassName("User-item-padded");
+
+	    li.forEach(function(item, index, array) {
+	      item.style.display = 'none';
+	    });
+
+	    li.forEach(function(item, index, array) {
+	      item.style.display = '';
+	    });
 	  });
 	}
 
 	function offlineGamers() {
-	  $("#button-offline").on("click", function(e) {
+	  buttonOffline = document.getElementById("button-offline");
+	  var li = document.getElementsByClassName("User-item-padded");
+
+	  buttonOffline.addEventListener("click", function(e) {
 	    e.preventDefault();
 
-	    $('.User-item-padded').hide();
-	    $('.User-item-padded.js-offline').show();
+	    li.style.display = 'none';
+	    li.style.display = '';
 	  });
 	}
 
 	function allGamers() {
-	  $("#button-all").on("click", function(e) {
+	  buttonAll = document.getElementById("button-all");
+	  var li = document.getElementsByClassName("User-item-padded");
+
+	  buttonAll.addEventListener("click", function(e) {
 	    e.preventDefault();
 
-	    $('.User-item-padded').show();
+	    li.style.display = 'none';
 	  });
 	}
 
+	$(function() {
+	  channels.forEach(function(channel) {
+	    var nodo = createNodo(channel);
+	    urlStream("streams", channel.channel, nodo);
+	    urlChannels("channels", channel.channel, nodo);
+	  });
+
+	  onlineGamers();
+	  offlineGamers();
+	  allGamers();
+	  filterInput();
+	});
 
 
 
