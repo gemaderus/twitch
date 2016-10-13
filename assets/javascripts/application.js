@@ -2,7 +2,7 @@ var $ = require('jquery');
 
 var channels = [{id: 1, channel: "ESL_SC2"}, {id: 2, channel: "OgamingSC2"}, {id: 3, channel: "cretetion"}, {id: 4, channel: "freecodecamp"}, {id: 5, channel: "storbeck"}, {id: 6, channel: "habathcx"}, {id: 7, channel: "brunofin"}, {id: 8, channel: "noobs2ninjas"}, {id: 9, channel: "medrybw"}, {id: 10, channel: "monstercat"}, {id: 11, channel: "RobotCaleb"}, {id: 12, channel: "comster404"}];
 
-var template = '<div class="User-item"><div class="Avatar"></div><div class="User-info"><p><a href="#" class="User-name"></a><span class="Status"></span></p><p class="Game"></p><p id="error"></p></div></div></div>';
+var template = '<div class="User-item"><div class="Avatar"></div><div class="User-info"><p><a href="#" class="User-name"></a><span class="Status"></span></p><p class="Game"></p><p class="error"></p></div></div></div>';
 
 var users = document.getElementById("user-items");
 
@@ -10,16 +10,21 @@ function makeURL(type, name) {
   return 'https://api.twitch.tv/kraken/' + type + '/' + name + '?client_id=c09cvez4remudiu2rau8edykwhpp3t0';
 }
 
-function ajaxCall(url, callback) {
+function ajaxCall(url, success, error) {
   var xhr = new XMLHttpRequest();
   var data;
   xhr.onreadystatechange = function() {
     if(xhr.readyState === 4) {
+      data = JSON.parse(xhr.responseText);
+
       if(xhr.status === 200) {
-        data = JSON.parse(xhr.responseText);
-        callback(data);
+        if (success) {
+          success(data);
+        }
       } else {
-        updateError();
+        if (error) {
+          error(data);
+        }
       }
     }
   }
@@ -31,6 +36,8 @@ function ajaxCall(url, callback) {
 function urlStream(type, item, nodo) {
   ajaxCall(makeURL(type, item), function(response) {
     updateData(nodo, response);
+  }, function (response) {
+    updateError(nodo, response);
   });
 };
 
@@ -39,29 +46,16 @@ function urlChannels(type, item, nodo) {
     infoUserName(nodo, response);
     infoLogo(nodo, response);
     bannerImage(nodo, response);
+  }, function (response) {
+    console.log(response);
   });
 };
 
 function updateError(nodo, data) {
-  var channelError = JSON.parse(data.responseText);
-  nodo.querySelectorAll(".Avatar").forEach(function(item, index, array) {
-    item.innerHTML = '<img src="images/logo.svg" alt="logo" class="logo-default">';
-  });
-
-  nodo.querySelector("#error").innerHTML = channelError.message;
-
-  nodo.querySelectorAll(".User-item").forEach(function(item, index, array) {
-    item.classList.toggle("Background-gradient");
-  });
+  nodo.querySelector(".Avatar").innerHTML = '<img src="images/logo.svg" alt="logo" class="logo-default">';
+  nodo.querySelector(".error").innerHTML = data.message;
+  nodo.querySelector(".User-item").classList.toggle("Background-gradient");
 }
-
-// function updateError(nodo, data) {
-//   var channelError = JSON.parse(data.responseText);
-//   nodo.find('.Avatar').append('<img src="https://www.dropbox.com/s/gtx0nldzgy38sxu/logo.svg?raw=1" alt="logo" class="logo-default">');
-//   nodo.find("#error").html(channelError.message);
-//   nodo.find(".User-item").toggleClass("Background-gradient");
-
-// }
 
 function createNodo(channel) {
   var nodo = document.createElement("li");
@@ -176,42 +170,49 @@ function onlineGamers() {
 
     e.preventDefault();
 
-    var li = document.getElementsByClassName("User-item-padded");
+    var li = document.querySelectorAll(".User-item-padded");
 
     li.forEach(function(item, index, array) {
-      item.style.display = 'none';
-    });
 
-    li.forEach(function(item, index, array) {
-      item.style.display = '';
+      if(item.classList.contains("js-online")) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
     });
   });
 }
 
 function offlineGamers() {
   buttonOffline = document.getElementById("button-offline");
-  var li = document.getElementsByClassName("User-item-padded");
+  var li = document.querySelectorAll(".User-item-padded");
 
   buttonOffline.addEventListener("click", function(e) {
     e.preventDefault();
 
-    li.style.display = 'none';
-    li.style.display = '';
+  li.forEach(function(item, index, array) {
+    if(item.classList.contains("js-offline")) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
+    });
   });
 }
 
 function allGamers() {
   buttonAll = document.getElementById("button-all");
-  var li = document.getElementsByClassName("User-item-padded");
+  var li = document.querySelectorAll(".User-item-padded");
 
   buttonAll.addEventListener("click", function(e) {
     e.preventDefault();
-
-    li.style.display = 'none';
+    li.forEach(function(item, index, array) {
+      item.style.display = '';
+    });
   });
 }
 
-$(function() {
+document.addEventListener('DOMContentLoaded', function() {
   channels.forEach(function(channel) {
     var nodo = createNodo(channel);
     urlStream("streams", channel.channel, nodo);
