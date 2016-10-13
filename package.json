@@ -1,18 +1,18 @@
 {
-  "name": "Origen",
+  "name": "Twitch",
   "version": "0.5.0",
-  "description": "Bootstrap tool with express, sass and livereload.",
+  "description": "App using the Twitch.tv JSON API.",
   "main": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nobuti/origen.git"
+    "url": "https://github.com/gemaderus/origen.git"
   },
-  "author": "Buti",
+  "author": "Gema",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nobuti/origen/issues"
+    "url": "https://github.com/gemaderus/origen/issues"
   },
-  "homepage": "https://github.com/nobuti/origen",
+  "homepage": "https://github.com/gemaderus/origen",
   "devDependencies": {
     "browser-sync": "^2.10.0",
     "gulp": "^3.9.0",
