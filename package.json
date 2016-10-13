@@ -3,9 +3,6 @@
   "version": "0.5.0",
   "description": "Bootstrap tool with express, sass and livereload.",
   "main": "",
-  "scripts": {
-    "deploy": "sh deploy.sh"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/nobuti/origen.git"
